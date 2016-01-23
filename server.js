@@ -19,7 +19,7 @@ mongoose.connect(database.url); 	// connect to mongoDB database on modulus.io
 
 require('./config/passport')(passport); // pass passport for configuration
 
-//app.use(express.static(__dirname + '/public')); 		// set the static files location /public/img will be /img for users
+app.use(express.static(__dirname + '/include')); 		// set the static files location /public/img will be /img for users
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser()); // get information from html forms
@@ -37,6 +37,7 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 // routes ======================================================================
 require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+require('./app/depositRoute.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
 // listen (start app with node server.js) ======================================
 app.listen(port);

@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+    <title>Fixed Deposit Details</title>
+    <!-- The jQuery library is a prerequisite for all jqSuite products -->
+    <script type="text/ecmascript" src="/js/jquery-1.11.0.min.js"></script>
+    <!-- We support more than 40 localizations -->
+    <script type="text/ecmascript" src="/js/i18n/grid.locale-en.js"></script>
+    <!-- This is the Javascript file of jqGrid -->
+    <script type="text/ecmascript" src="/js/jquery.jqGrid.min.js"></script>
+    <script src="/js/dataLoad.js"></script>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/css/ui.jqgrid-bootstrap-ui.css">
+    <link rel="stylesheet" href="/css/ui.jqgrid-bootstrap.css">
+    <link rel="stylesheet" href="/css/ui.jqgrid.css">
+
+    <style>
+        body        { padding-top:80px; word-wrap:break-word; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="page-header">
+      <div class="text-center">
+        <h1><span class="fa fa-anchor"></span>Deposit Details</h1>
+      </div>
+      <div class="text-right">
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+      </div>
+    </div>
+
+    <div class="row">
+
+        <!-- LOCAL INFORMATION -->
+        <div class="col-sm-12">
+            <div class="well">
+                <h3><i class="fa fa-credit-card"></i> List of Deposits</h3>
+
+                    <p>
+                      <table id="list2"></table>
+                      <div id="pager2"></div>
+                    </p>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>
