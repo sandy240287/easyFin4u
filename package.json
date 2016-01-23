@@ -20,6 +20,11 @@
     "cookie-parser": "~1.0.0",
     "method-override": "~1.0.0",
     "express-session": "~1.0.0",
-    "sendgrid": "^1.9.2"
+    "sendgrid": "^1.9.2",
+    "moment":"2.0.0",
+    "nodemailer":"2.0.0",
+    "nodemailer-smtp-transport":"2.0.0",
+    "crypto":"0.0.3",
+    "async":"1.5.2"
   }
 }

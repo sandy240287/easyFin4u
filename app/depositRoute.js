@@ -1,4 +1,5 @@
 var Deposit = require('./models/deposit');
+var moment = require('moment');
 
 module.exports = function(app, passport) {
   app.get('/api/deposits', function(req, res) {
@@ -16,7 +17,13 @@ module.exports = function(app, passport) {
 
     // create Deposit and send back all deposits after creation
     app.post('/api/deposits', function(req, res) {
-        if(req.body.oper === 'add'){
+      console.log(req.body);
+        if((req.body.oper === 'add') || (req.body.oper === 'edit')){
+
+            var fomatted_create_date = moment(req.body.createDate).format('YYYY-MM-DD');
+            var fomatted_maturity_date = moment(req.body.maturityDate).format('YYYY-MM-DD');
+            console.log(fomatted_create_date);
+            console.log(fomatted_maturity_date);
             // create a Deposit, information comes from AJAX request from Angular
             var query = { $and: [ { userid: req.user._id }, { number: req.body.number } ]};
             var options = { upsert: 'true' };
@@ -24,14 +31,18 @@ module.exports = function(app, passport) {
                 bank : req.body.bank,
                 number : req.body.number,
                 amount : req.body.amount,
-                createDate : req.body.createDate,
-                maturityDate : req.body.maturityDate,
+                createDate : fomatted_create_date,
+                maturityDate : fomatted_maturity_date,
+                //createDate : req.body.createDate,
+                //maturityDate : req.body.maturityDate,
                 type : req.body.type,
                 maturityAmount : req.body.maturityAmount,
                 done : false
             }}, options, function(err, deposit) {
-                if (err)
+                if (err){
+                    console.log("Error:" + err);
                     res.send(err);
+                  }
 
                 // get and return all the deposits after you create another
                 Deposit.find(function(err, deposit) {
@@ -58,6 +69,7 @@ module.exports = function(app, passport) {
 
     // delete a Deposit
     app.post('/api/delDeposits/', function(req, res) {
+        console.log(req.body);
         Deposit.remove({
             _id : req.params.Deposit_id
         }, function(err, Deposit) {

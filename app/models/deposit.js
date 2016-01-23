@@ -4,10 +4,9 @@ module.exports = mongoose.model('deposit', {
   bank : String,
   number : String,
   amount : String,
-  createDate : String,
-  maturityDate : String,
+  createDate : Date,
+  maturityDate : Date,
   type : String,
   maturityAmount : String,
-  id : String,
   userid : String
 });
