@@ -3,7 +3,8 @@
 An application built using Node, Express and Mongo for managing multiple financial services.
 
 Services Currently Provided are :-
-1. Deposit Manager with Maturity Reminder Service
+
+  1. Deposit Manager with Maturity Reminder Service
 
 ## Requirements
 
@@ -11,7 +12,7 @@ Services Currently Provided are :-
 
 ## Installation
 
-1. Clone the repository: `git clone git@github.com:scotch-io/node-todo`
+1. Clone the repository: `git clone https://github.com/sandy240287/easyFin4u.git`
 2. Install the application: `npm install`
 3. Start the server: `node server.js`
 4. View in browser at `http://localhost:8080`
