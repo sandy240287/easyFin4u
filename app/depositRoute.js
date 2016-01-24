@@ -4,13 +4,15 @@ var moment = require('moment');
 module.exports = function(app, passport) {
   app.get('/api/deposits', function(req, res) {
         var query = {userid: req.user._id};
+        console.log(query);
         // use mongoose to get all deposits in the database
         Deposit.find(query,function(err, deposit) {
 
             // if there is an error retrieving, send the error. nothing after res.send(err) will execute
-            if (err)
-                res.send(err)
-
+            if (err){
+              console.log("Error:"+ err);
+              res.send(err);
+            }
             res.json(deposit); // return all deposits in JSON format
         });
     });

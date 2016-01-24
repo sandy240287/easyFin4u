@@ -3,7 +3,6 @@ var express  = require('express');
 var app      = express(); 								// create our app w/ express
 var mongoose = require('mongoose'); 					// mongoose for mongodb
 var port  	 = process.env.PORT || 8080; 				// set the port
-
 var morgan   = require('morgan');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
@@ -11,6 +10,7 @@ var passport = require('passport');
 var flash    = require('connect-flash');
 var session      = require('express-session');
 var cookieParser = require('cookie-parser');
+var cron = require('node-schedule');
 
 var database = require('./config/database'); 			// load the database config
 
@@ -38,6 +38,18 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 // routes ======================================================================
 require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 require('./app/depositRoute.js')(app, passport); // load our routes and pass in our app and fully configured passport
+
+//Cron Scheduler for Reminder Service Starts - Runs everyday at 3 AM
+var reminderService = require('./app/reminderService.js');
+var rule = new cron.RecurrenceRule();
+rule.dayOfWeek = [1,2,3,4,5,6,0];
+rule.hour = 3;
+rule.minute = 0;
+cron.scheduleJob(rule, function(){
+    console.log(new Date(), 'Calling the Maturity Reminder Service');
+    reminderService.reminderService();
+});
+//Cron Scheduler for Reminder Service Ends - Runs everyday at 3 AM
 
 // listen (start app with node server.js) ======================================
 app.listen(port);

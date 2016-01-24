@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
+//var encrypt = require('mongoose-encryption');
+//var secret = "hardToCrack@101";
 
-module.exports = mongoose.model('deposit', {
+var depositSchema = new mongoose.Schema({
   bank : String,
   number : String,
   amount : String,
@@ -10,3 +12,7 @@ module.exports = mongoose.model('deposit', {
   maturityAmount : String,
   userid : String
 });
+
+//depositSchema.plugin(encrypt, { secret: secret });
+
+module.exports = mongoose.model('deposit',depositSchema);
