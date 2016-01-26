@@ -110,8 +110,8 @@ module.exports = function(app, passport) {
                 var options = {
                               service: 'SendGrid',
                               auth: {
-                                user: 'sandeep.saini.cs@gmail.com',
-                                pass: 'Sandeep@1987'
+                                user: '<email>',
+                                pass: '<password>'
                               }
                             };
                 var smtpTransporter = nodemailer.createTransport(smtpTransport(options));
@@ -171,8 +171,8 @@ module.exports = function(app, passport) {
               var options = {
                             service: 'SendGrid',
                             auth: {
-                              user: 'sandeep.saini.cs@gmail.com',
-                              pass: 'Sandeep@1987'
+                              user: '<email>',
+                              pass: '<password>'
                             }
                           };
               var smtpTransporter = nodemailer.createTransport(smtpTransport(options));
